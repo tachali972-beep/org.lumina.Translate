@@ -1,0 +1,34 @@
+app-id: io.github.aliakareem.LuminaTranslate
+runtime: org.kde.Platform
+runtime-version: '6.6'
+sdk: org.kde.Sdk
+base: com.riverbankcomputing.PyQt.BaseApp
+base-version: '6.6'
+command: luminatranslate
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --share=network
+  - --device=all
+modules:
+  - python3-requirements.json
+  - name: luminatranslate
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 main.py /app/bin/main.py
+      - install -Dm755 luminatranslate.sh /app/bin/luminatranslate
+      - install -Dm644 logo.png /app/share/icons/hicolor/512x512/apps/io.github.aliakareem.LuminaTranslate.png
+      - install -Dm644 io.github.aliakareem.LuminaTranslate.desktop /app/share/applications/io.github.aliakareem.LuminaTranslate.desktop
+      - install -Dm644 io.github.aliakareem.LuminaTranslate.metainfo.xml /app/share/metainfo/io.github.aliakareem.LuminaTranslate.metainfo.xml
+    sources:
+      - type: file
+        path: main.py
+      - type: file
+        path: luminatranslate.sh
+      - type: file
+        path: logo.png
+      - type: file
+        path: io.github.aliakareem.LuminaTranslate.desktop
+      - type: file
+        path: io.github.aliakareem.LuminaTranslate.metainfo.xml

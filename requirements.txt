@@ -1,0 +1,8 @@
+setuptools
+wheel
+deep-translator
+gTTS
+evdev
+pynput
+pyperclip
+evdev==1.7.1
